@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Halaman Untuk Animals</h2>
+    
+    <h1>Halaman Untuk Animals</h1>
+
 </body>
 
 </html>

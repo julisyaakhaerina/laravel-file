@@ -1,5 +1,16 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
+use App\Models\Album_musik;
+use App\Models\Sekolah;
+use App\Models\Siswa;
+use App\Models\Film;
+use App\Models\DetailFilm;
+use App\Http\Controllers\Mycontroller;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\PenulisController;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +49,44 @@ Route::get('/sample/{nama}', function (Request $request, $nama) {
     $nama2 = $nama;
     return view('sample', compact('nama2'));
 });
+
+//menampilkan semua data
+Route::get('siswa', function() {
+    return view('siswa');
+});
+
+Route::get('sekolah', function() {
+    return view('sekolah');
+});
+
+Route::get('album_musik', function() {
+    return view('album_musik');
+});
+
+Route::get('film', function() {
+    return view('film');
+});
+
+Route::get('film{id}', function(int $id) {
+    return view('detail_film', ['film' => Film::findorFail($id)]);
+});
+
+// route with controller
+Route::get('perkenalan',[Mycontroller::class,'introduce']);
+Route::get('hewan',[Mycontroller::class,'animals']);
+
+// route movie
+Route::get('movie', [MovieController::class, 'getMovie'])->middleware('auth');
+Route::get('movie/{id}', [MovieController::class, 'getMovieById']);
+
+// route artikel
+Route::get('artikel', [ArtikelController::class, 'getArtikel']);
+Route::get('artikel/id/{id}', [ArtikelController::class, 'getArtikelById']);
+Route::get('artikel/kategori/{kategori}', [ArtikelController::class, 'getArtikelByKategori']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// route crud
+Route::resource('penulis', PenulisController::class);

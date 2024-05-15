@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\MediaFilm;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +22,26 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // $this-> call([
+        //     SiswaSeeder::class,
+        // ]);
+        // $this-> call([
+        //     SekolahSeeder::class,
+        // ]);
+        // $this-> call([
+        //     AlbumMusikSeeder::class,
+        // ]);
+        // $this-> call([
+        //     FilmSeeder::class,
+        // ]);
+        // $this-> call([
+        //     DetailFilmSeeder::class,
+        // ]);
+        // $this-> call([
+        //     MediaFilmSeeder::class,
+        // ]);
+        $this-> call([
+            ArtikelSeeder::class,
+        ]);
     }
 }
